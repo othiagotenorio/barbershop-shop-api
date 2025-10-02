@@ -8,10 +8,9 @@ import com.app.barbeariashop.repository.ClienteRepository;
 import com.app.barbeariashop.repository.ServicoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -46,5 +45,49 @@ public class AgendamentoController {
         return ResponseEntity.ok(agendamentoRepository.save(agendamento));
     }
 
+    @GetMapping
+    public List<Agendamento> listarAgendamento() {
+        return agendamentoRepository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Agendamento> buscarAgendamento(@PathVariable Long id) {
+        return agendamentoRepository.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Agendamento> atualizarAgendamento(@PathVariable Long id, @RequestBody Agendamento agendamentoAtualizado) {
+
+        return agendamentoRepository.findById(id)
+                .map(agendamento -> {
+                    agendamento.setCliente(agendamentoAtualizado.getCliente());
+                    agendamento.setBarbeiro(agendamentoAtualizado.getBarbeiro());
+                    agendamento.setServico(agendamentoAtualizado.getServico());
+                    agendamento.setDataHora(agendamentoAtualizado.getDataHora());
+                    return ResponseEntity.ok(agendamentoRepository.save(agendamento));
+                }).orElse(ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletarAgendamento(@PathVariable Long id) {
+
+        return agendamentoRepository.findById(id)
+                .map(agendamento -> {
+                    agendamentoRepository.delete(agendamento);
+                    return ResponseEntity.noContent().<Void>build();
+                }).orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/cliente/{clienteId}")
+    public List<Agendamento> listarPorCliente(@PathVariable Long clienteId) {
+        return agendamentoRepository.findByClienteId(clienteId);
+    }
+
+    @GetMapping("/barbeiro/{barbeiroId}")
+    public List<Agendamento> listarPorBarbeiro(@PathVariable Long barbeiroId) {
+        return agendamentoRepository.findByBarbeiroId(barbeiroId);
+    }
 
 }
