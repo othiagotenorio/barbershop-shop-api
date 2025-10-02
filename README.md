@@ -17,15 +17,15 @@ A solução oferece **controle de clientes, agendamentos, fluxo de caixa e servi
 ## ✨ Funcionalidades
 
 ### ✅ Implementadas
-- **Cadastro de Clientes** – Histórico completo dos clientes.  
-- **Gestão de Serviços** – Controle de tipos de corte e valores.  
-- **Agendamento** – Sistema de horários e marcações.  
-- **Fluxo de Caixa** – Controle financeiro e relatórios.  
+- 
 
 ### 🔄 Em Desenvolvimento
 - **Dashboard Administrativo** – Visão geral do negócio.  
 - **Relatórios Avançados** – Análises financeiras detalhadas.  
-- **App Mobile** – Versão mobile para clientes e funcionários.  
+- **Cadastro de Clientes** – Histórico completo dos clientes.  
+- **Gestão de Serviços** – Controle de tipos de corte e valores.  
+- **Agendamento** – Sistema de horários e marcações.  
+- **Fluxo de Caixa** – Controle financeiro e relatórios.   
 
 ---
 
@@ -39,7 +39,7 @@ A solução oferece **controle de clientes, agendamentos, fluxo de caixa e servi
 - **Maven** – Gerenciamento de dependências  
 
 ### Banco de Dados
-- **MySQL / PostgreSQL** – Banco de dados relacional  
+- **PostgreSQL** – Banco de dados relacional  
 - **H2 Database** – Banco em memória para desenvolvimento  
 
 ### Ferramentas
@@ -54,7 +54,7 @@ Antes de rodar o projeto, você precisa ter instalado:
 
 - **Java JDK 17 ou superior**  
 - **Maven 3.6+**  
-- **MySQL 8.0+ ou PostgreSQL 14+**  
+- **PostgreSQL 14+**  
 - **Git**  
 
 ---
