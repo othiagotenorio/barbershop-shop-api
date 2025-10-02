@@ -1,5 +1,6 @@
 package com.app.barbeariashop.model;
 
+import com.app.barbeariashop.enuns.Status;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -35,6 +36,7 @@ public class Agendamento {
     @Column(name = "DATAHORA")
     private LocalDateTime dataHora;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "STATUS")
-    private String status; //PENDENTE, CONCLUÍDO, CANCELADO
+    private Status status; //PENDENTE, CONCLUÍDO, CANCELADO
 }
