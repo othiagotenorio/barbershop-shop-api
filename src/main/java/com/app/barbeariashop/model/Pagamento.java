@@ -1,5 +1,6 @@
 package com.app.barbeariashop.model;
 
+import com.app.barbeariashop.enuns.MetodoPagamento;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,11 +27,14 @@ public class Pagamento {
     @Column(name = "AGENDAMENTO")
     private Agendamento agendamento;
 
-    @Column(name = "FORMAPAGAMENTO")
-    private String formaPagamento;
+    @Enumerated(EnumType.STRING)
+    private MetodoPagamento metodo;
 
     @Column(name = "VALOR")
     private Double valor;
+
+    @ManyToOne
+    private Cliente cliente;
 
     @Column(name = "DATA")
     private LocalDateTime data;

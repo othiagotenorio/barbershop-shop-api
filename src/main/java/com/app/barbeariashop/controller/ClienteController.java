@@ -1,6 +1,7 @@
 package com.app.barbeariashop.controller;
 
 import com.app.barbeariashop.model.Cliente;
+import com.app.barbeariashop.model.Servico;
 import com.app.barbeariashop.repository.ClienteRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.catalina.connector.Response;
@@ -22,8 +23,8 @@ public class ClienteController {
     }
 
     @GetMapping
-    public List<Cliente> listarCliente() {
-        return clienteRepository.findAll();
+    public ResponseEntity<List<Cliente>> listarCliente() {
+        return ResponseEntity.ok(clienteRepository.findAll());
     }
 
     @GetMapping("/{id}")

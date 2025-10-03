@@ -80,6 +80,16 @@ public class AgendamentoController {
                 }).orElse(ResponseEntity.notFound().build());
     }
 
+    @PatchMapping("/{id}/status")
+    public ResponseEntity<Agendamento> atualizarStatus(@PathVariable Long id, @RequestParam("status") Status status) {
+        return agendamentoRepository.findById(id)
+                .map(statusAtual -> {
+                    statusAtual.setStatus(status);
+                    Agendamento atualizado = agendamentoRepository.save(statusAtual);
+                    return ResponseEntity.ok(atualizado);
+                }).orElse(ResponseEntity.notFound().build());
+    }
+
     @GetMapping("/cliente/{clienteId}")
     public List<Agendamento> listarPorCliente(@PathVariable Long clienteId) {
         return agendamentoRepository.findByClienteId(clienteId);
