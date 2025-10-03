@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -24,7 +25,7 @@ public class Despesa {
     private String tipo;
 
     @Column(name = "VALOR")
-    private Double valor;
+    private BigDecimal valor;
 
     @Column(name = "DATA")
     private LocalDateTime data;
